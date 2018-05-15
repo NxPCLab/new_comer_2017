@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<!--
+IAMAS非公認校歌
+作詞・作曲:箕輪こあら 編曲:ぺがさす義朗
+
+はるかに　のぞむ　いぶきやま
+つどえ　めでぃあの　ひょうげんしゃ
+くには　ひのもと　ほこりたかき
+わかい　ちからが　あすをひらく
+あー　あー　いあます
+じょうほうかがくげいじゅつだいがくいんだいがくと
+ぎふけんりつこくさいじょうほうかがくげいじゅつあかでみー
+-->
+<html lang="ja">
+<head>
+    <link rel="icon" href="res/favicon.ico">
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="NxPC.Lab 2017 Freshman's Party">
+    <meta name="keywords" content="NxPC.Lab freshman Party 2017">
+    <meta name="og:type" content="website">
+    <meta name="og:image" content="res/main.png">
+    <meta name="og:title" content="#a_feel_of_AGEteiku | NxPC.Lab Freshman's Party">
+    <meta name="og:description" content="NxPC.Lab 2017年新入生ライブ">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:description" content="NxPC.Lab 2017年新入生ライブ">
+    <meta name="twitter:text:description" content="NxPC.Lab 2017年新入生ライブ">
+    <meta name="twitter:title" content="#a_feel_of_AGEteiku | NxPC.Lab Freshman's Party">
+    <meta name="twitter:text:title" content="#a_feel_of_AGEteiku | NxPC.Lab Freshman's Party">
+    <meta name="twitter:image" content="res/main.png">
+    <link rel="shortcut icon" href="favicon.ico">
+	<title>#a_feel_of_AGEteiku | NxPC.Lab 2017 Freshman's Party</title>
+    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:700" rel="stylesheet">
+    <script src="js/jquery-3.2.1.min.js"></script>
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+    <style>
+        body{
+            font-family: "Open Sans", "ヒラギノ角ゴ Pro W3", "メイリオ", "meiryo", sans-serif;
+        }
+    	.partyName{
+    		font-weight: bold;
+    		text-align: center;
+    	}
+        .partyNameSub{
+            font-weight: bold;
+            text-align: center;
+            text-decoration: underline;
+        }
+        .nameSub{
+            font-weight: bold;
+        }
+        .pSec{
+            margin: 0px;
+            padding: 20px;
+        }
+        .subTitle{
+            text-align: center;
+        }
+        p{
+            font-size: 13pt;
+        }
+        .playerSec{
+            margin: 10px;
+        }
+        iframe{
+            margin: 20px;
+            width: 100%;
+            text-align: center;
+        }
+        .textParent{
+            padding: 20px;
+        }
+        .playerPic{
+            float: left;
+            width: 100%;
+            margin: 10px;
+        }
+        .playerText{
+            margin: 10px;
+        }
+        .aboutText{
+            margin: 20px;
+        }
+        .bg-green{
+            background-color: rgba(47,205,180,0.4);
+        }
+        body, html{
+            width: 100%;
+            height: 100%;
+            background-color: black;
+            color: white;
+        }
+        #canvas{
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        #body{
+            width: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+    </style>
+    <script>
+        var timer = false;
+        let canvasWidth = 0;
+        let canvasHeight = 0;
+
+        let init = () => {
+            let img = new Image();
+            img.src = "./res/karaage.png";
+
+
+            let rb = 200;
+            let r = 0;
+            let x = 0;
+
+            canvasWidth  = $("body").width();
+            canvasHeight = $("body").height();
+
+            $("#canvas").attr({
+                width: canvasWidth
+            });
+            $("#canvas").attr({
+                height: canvasHeight
+            });
+
+            let canvas = document.getElementById("canvas");
+            let context = canvas.getContext("2d");
+
+            let draw = () => {
+                context.clearRect(0, 0, canvasWidth, canvasHeight);
+                context.beginPath();
+                for(let i = 0;i<10;i++) {
+                    r = rb + Math.sin((x + i * 36)  / 60) * 60;
+                    console.log(r);
+                    let theta = (x + i * 36) * (Math.PI / 180);
+                    let xp = Math.sin(theta*theta*theta);
+                    let yp = Math.cos(theta*theta*theta);
+
+                    context.drawImage(img, xp * r + (canvasWidth / 2 - 35), yp * r + (canvasHeight / 2 - 35), 70, 70);
+                }
+                x+=1;
+                x = (x > /*360*/5760)? 0 : x ;
+            }
+            setInterval(draw, 20);
+        }
+
+        $(window).resize(function() {
+            if (timer !== false) {
+                clearTimeout(timer);
+            }
+            timer = setTimeout(function() {
+
+                canvasWidth  = $("body").width();
+                canvasHeight = $("body").height();
+
+                $("#canvas").attr({
+                    width: canvasWidth
+                });
+                $("#canvas").attr({
+                    height: canvasHeight
+                });
+            }, 200);
+        });
+    </script>
+</head>
+<body onload="init();">
+<canvas id="canvas"></canvas>
+<section id="body">
+    <div style="width:100%" class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12">
+		        <h1 class="partyName">
+			 	   NxPC.Lab 2017 Freshman's Party
+			    </h1>
+			    <h2 class="partyNameSub">
+                    <a target="_blank" href="https://twitter.com/search?q=%23a_feel_of_AGEteiku">
+                        #a_feel_of_AGEteiku
+                    </a>
+                </h2>
+                </br>
+            </div>
+            <div class="col-lg-12">
+                <div class="row bg-green">
+                    <div class="col-lg-2 col-sm-0"></div>
+                    <div class="col-lg-8 col-sm-12">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <h2 class="pSec subTitle">DateTime & Place</h2>
+                            </div>
+                            <div class="col-lg-6 col-sm-12">
+                                <iframe style="width: 1000px; height: 300px; max-width:90%;" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3253.5178835763163!2d136.63727231556848!3d35.36760935471482!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzXCsDIyJzAzLjQiTiAxMzbCsDM4JzIyLjEiRQ!5e0!3m2!1sja!2sjp!4v1494858936832" frameborder="0" style="border:0" allowfullscreen></iframe>
+                            </div>
+                            <div class="textParent pSec col-lg-6 col-sm-12">
+                                <h2 class="nameSub">
+                                    DateTime
+                                </h2>
+                                <p>
+                                    2017/06/15(Thu) 18:00 - 21:00
+                                </p>
+                                <h2 class="nameSub">
+                                    Place
+                                </h2>
+                                <p>
+                                    ソフトピアジャパン センタービル
+                                </p>
+                                <p>
+                                    情報科学芸術大学院大学 ギャラリー1
+                                </p>
+                                <p>
+                                    岐阜県大垣市加賀野4丁目1−7
+                                </p>
+                                <a href="https://twitter.com/share" class="twitter-share-button">Tweet</a> <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-sm-0"></div>
+                </div>
+            </div>
+            <div class="col-lg-12">
+                <div class="row">
+                    <div class="col-lg-2 col-sm-0"></div>
+                    <div class="col-lg-8 col-sm-12">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <h2 class="pSec subTitle">Players</h2>
+                            </div>
+                            <div class="cards col-lg-12">
+                                <div class="playerSec row">
+                                    <h2 class="col-lg-12 subTitle">
+                                        あげいづ
+                                    </h2>
+                                    <div class="col-lg-3 col-sm-12">
+                                        <img class="playerPic" src="res/ageizu.png">
+                                    </div>
+                                    <div class="col-lg-9 col-sm-12">
+                                        <p class="playerText">
+                                            唐揚げ食べて、悪霊退散。
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="cards col-lg-12">
+                                <div class="playerSec row">
+                                    <h2 class="col-lg-12 subTitle">
+                                        いっくん feat.きっしー
+                                    </h2>
+                                    <div class="col-lg-3 col-sm-12">
+                                        <img class="playerPic" src="res/ikkun.jpg">
+                                    </div>
+                                    <div class="col-lg-9 col-sm-12">
+                                        <p class="playerText">
+                                            福岡で大学時代を過ごし、ギター弾いたり歌ったりしてました。</br>
+                                            </br>
+                                            演奏の動きで映像を作ることに興味があります。</br>
+                                            「癒し系ジェネラティブアート」目指してがんばります。</br>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="cards col-lg-12">
+                                <div class="playerSec row">
+                                    <h2 class="col-lg-12 subTitle">
+                                        荏原洋夢
+                                    </h2>
+                                    <div class="col-lg-3 col-sm-12">
+                                        <img class="playerPic" src="res/rahiro.jpg">
+                                    </div>
+                                    <div class="col-lg-9 col-sm-12">
+                                        <p class="playerText">
+                                            インダストリアルそーおん、秋田と新潟のハーフ。
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="cards col-lg-12">
+                                <div class="playerSec row">
+                                    <h2 class="col-lg-12 subTitle">
+                                        岸本マサタカ
+                                    </h2>
+                                    <div class="col-lg-3 col-sm-12">   
+                                        <img class="playerPic" src="res/kishi.jpg">
+                                    </div>
+                                    <div class="col-lg-9 col-sm-12">
+                                        <p class="playerText">
+                                            生後間もなくから音楽の英才教育を受ける。特に「天使の琴声」とも評された歌声は本人の知らぬところで、それを信仰対象として崇める新興宗教が日本全国で、同時多発かつ自然発生的に生まれるほどであった。5歳のときに作詞・作曲し、発売された独唱曲《ニルヴァーナ》は当時「聴くだけで思考が奪われる」と各地で話題となりその後それを聴いたものが「解脱」と称して自殺する事件が多発し発禁となる。その後2017年現在に至るまで目立った音楽活動は行われていない、</br>
+                                            </br>
+                                            という夢を見た。
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="cards col-lg-12">
+                                <div class="playerSec row">
+                                    <h2 class="col-lg-12 subTitle">
+                                        Kei Minoura
+                                    </h2>
+                                    <div class="col-lg-3 col-sm-12">
+                                        <img class="playerPic" src="res/kei.jpg">
+                                    </div>
+                                    <div class="col-lg-9 col-sm-12">
+                                        <p class="playerText">
+                                            Tidal、初挑戦。ちょっと踊ります。
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="cards col-lg-12">
+                                <div class="playerSec row">
+                                    <h2 class="col-lg-12 subTitle">
+                                        なかじ
+                                    </h2>
+                                    <div class="col-lg-3 col-sm-12">
+                                        <img class="playerPic" src="res/nakaji.jpg">
+                                    </div>
+                                    <div class="col-lg-9 col-sm-12">
+                                        <p class="playerText">
+                                            裏方担当。あだ名じゃないです、本名です。
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="cards col-lg-12">
+                                <div class="playerSec row">
+                                    <h2 class="col-lg-12 subTitle">
+                                        たなっち
+                                    </h2>
+                                    <div class="col-lg-3 col-sm-12">
+                                        <img class="playerPic" src="res/tana.jpg">
+                                    </div>
+                                    <div class="col-lg-9 col-sm-12">
+                                        <p class="playerText">
+                                            たなっちなんて呼ばれたことないけれど、心機一転たなっち頑張るっち
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="cards col-lg-12">
+                                <div class="playerSec row">
+                                    <h2 class="col-lg-12 subTitle">
+                                        HIRASSEY
+                                    </h2>
+                                    <div class="col-lg-3 col-sm-12">
+                                        <img class="playerPic" src="res/hirassey.jpg">
+                                    </div>
+                                    <div class="col-lg-9 col-sm-12">
+                                        <p class="playerText">
+                                            苦行はつづくよどこまでも
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="cards col-lg-12">
+                                <div class="playerSec row">
+                                    <h2 class="col-lg-12 subTitle">
+                                        日比野光紘
+                                    </h2>
+                                    <div class="col-lg-3 col-sm-12">    
+                                        <img class="playerPic" src="res/mitsu.jpg">
+                                    </div>
+                                    <div class="col-lg-9 col-sm-12">
+                                        <p class="playerText">
+                                            DJちょっとわかるオタク。</br><a href="http://nasustim.com" target="_blank">http://nasustim.com</a>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="cards col-lg-12">
+                                <div class="playerSec row">
+                                    <h2 class="col-lg-12 subTitle">
+                                        dropcontrol / hiroshi yamato
+                                    </h2>
+                                    <div class="col-lg-3 col-sm-12">
+                                        <img class="playerPic" src="res/yamato.png">
+                                    </div>
+                                    <div class="col-lg-9 col-sm-12">
+                                        <p class="playerText">
+                                            1970年横浜出身。エンジニアで音楽家(作編曲、ギタリスト、テナーサックス奏者、ビートメーカー)。ギターを小川銀次、市野元彦に師事し、音楽理論、テナーサックスを菊地成孔に師事。現在は三輪眞弘に師事しリズムに関する研究を行っている。</br><a href="http://www.dropcontrol.com/" target="_blank">http://www.dropcontrol.com/</a>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="cards col-lg-12">
+                                <div class="playerSec row">
+                                    <h2 class="col-lg-12 subTitle">
+                                        hamadayaro
+                                    </h2>
+                                    <div class="col-lg-3 col-sm-12">    
+                                        <img class="playerPic" src="res/hama.png">
+                                    </div>
+                                    <div class="col-lg-9 col-sm-12">
+                                        <p class="playerText">
+                                            それなりにそれっぽくできるように頑張ります。
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-sm-0"></div>
+                </div>
+                <div class="row bg-green">
+                    <div class="col-lg-12">
+                        <h2 class="pSec subTitle">About "NxPC.Lab"</h2>
+                    </div>
+                    <div class="col-lg-2 col-sm-0"></div>
+                    <div class="aboutText col-lg-8 col-sm-12">
+                        <p><!-- class="aboutText"-->
+                            <h3>NxPC.Lab （新次元多層メディア的クラブ体験研究室）</h3></br>
+                            NxPC.Labは、クラブやライブにおけるアーティストと観客の相互作用によってもたらされる場の臨場感を拡大し、ネットへも拡散させるためのメディアテクノロジーの実現を目指した研究機関です。</br>
+                            現代のメディア体験において必要とされる対話性、参加性をデバイス、インタフェース、ネットワークといったメディアテクノロジーを駆使することで、音楽体験を拡張し、音楽空間におけるコミュニケーションを次のステージへ導くための研究開発、イベントを実施しています。実験の場としてのイベントNxPC.Liveを中心に、レクチャーやワークショップ、ネットラジオなどの活動を行っています。</br>
+                        </p>
+                    </div>
+                    <div class="col-lg-2 col-sm-0"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+</body>
+</html>
