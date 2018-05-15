@@ -1,0 +1,36 @@
+{
+  "name": "new_comer_2017",
+  "version": "1.0.0",
+  "description": "Event Page for \"NxPC.Lab 2017 new comer's party\".   ## URI   <http://nxpclab.info/new_comer_2017/>   ## Author - Mitsuhiro HIBINO (17114)",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NxPCLab/new_comer_2017.git"
+  },
+  "keywords": [
+    "nxpclab"
+  ],
+  "author": "Mitsuhiro HIBINO",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/NxPCLab/new_comer_2017/issues"
+  },
+  "homepage": "https://github.com/NxPCLab/new_comer_2017#readme",
+  "devDependencies": {
+    "browserify": "^16.2.2",
+    "gulp": "^3.9.1",
+    "gulp-imagemin": "^4.1.0",
+    "imagemin-gifsicle": "^5.2.0",
+    "imagemin-jpeg-recompress": "^5.1.0",
+    "imagemin-pngquant": "^5.1.0",
+    "popper.js": "^1.14.3",
+    "vinyl-source-stream": "^2.0.0"
+  },
+  "dependencies": {
+    "bootstrap": "^4.1.1",
+    "jquery": "^3.3.1"
+  }
+}

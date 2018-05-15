@@ -31,10 +31,9 @@ IAMAS非公認校歌
     <meta name="twitter:image" content="res/main.png">
     <link rel="shortcut icon" href="favicon.ico">
 	<title>#a_feel_of_AGEteiku | NxPC.Lab 2017 Freshman's Party</title>
-    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:700" rel="stylesheet">
-    <script src="js/jquery-3.2.1.min.js"></script>
-    <script src="bootstrap/js/bootstrap.min.js"></script>
+    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <script src="js/bundle.js"></script>>
     <style>
         body{
             font-family: "Open Sans", "ヒラギノ角ゴ Pro W3", "メイリオ", "meiryo", sans-serif;
@@ -106,71 +105,8 @@ IAMAS非公認校歌
             left: 0;
         }
     </style>
-    <script>
-        var timer = false;
-        let canvasWidth = 0;
-        let canvasHeight = 0;
-
-        let init = () => {
-            let img = new Image();
-            img.src = "./res/karaage.png";
-
-
-            let rb = 200;
-            let r = 0;
-            let x = 0;
-
-            canvasWidth  = $("body").width();
-            canvasHeight = $("body").height();
-
-            $("#canvas").attr({
-                width: canvasWidth
-            });
-            $("#canvas").attr({
-                height: canvasHeight
-            });
-
-            let canvas = document.getElementById("canvas");
-            let context = canvas.getContext("2d");
-
-            let draw = () => {
-                context.clearRect(0, 0, canvasWidth, canvasHeight);
-                context.beginPath();
-                for(let i = 0;i<10;i++) {
-                    r = rb + Math.sin((x + i * 36)  / 60) * 60;
-                    console.log(r);
-                    let theta = (x + i * 36) * (Math.PI / 180);
-                    let xp = Math.sin(theta*theta*theta);
-                    let yp = Math.cos(theta*theta*theta);
-
-                    context.drawImage(img, xp * r + (canvasWidth / 2 - 35), yp * r + (canvasHeight / 2 - 35), 70, 70);
-                }
-                x+=1;
-                x = (x > /*360*/5760)? 0 : x ;
-            }
-            setInterval(draw, 20);
-        }
-
-        $(window).resize(function() {
-            if (timer !== false) {
-                clearTimeout(timer);
-            }
-            timer = setTimeout(function() {
-
-                canvasWidth  = $("body").width();
-                canvasHeight = $("body").height();
-
-                $("#canvas").attr({
-                    width: canvasWidth
-                });
-                $("#canvas").attr({
-                    height: canvasHeight
-                });
-            }, 200);
-        });
-    </script>
 </head>
-<body onload="init();">
+<body>
 <canvas id="canvas"></canvas>
 <section id="body">
     <div style="width:100%" class="container-fluid">
